@@ -13,7 +13,7 @@ Implemented features
 Installation
 ----------
 
-First you need **composer**, if you don't already have it. You can execute this in your eZ Publish root directory.
+First you'll need **composer**, if you don't already have it. You can execute this in your eZ Publish root directory.
 
 ```shell
 curl -sS https://getcomposer.org/installer | php

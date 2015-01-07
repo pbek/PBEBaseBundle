@@ -1,14 +1,17 @@
 {
   "name": "pbe/base-bundle",
   "description": "Webpage helper bundle for eZ Publish Platform",
+  "keywords": ["ezpublish", "menu"],
   "license": "GPL-2.0",
   "authors": [
     {
       "name": "Patrizio Bekerle",
+      "email": "office@bekerle.com",
       "homepage": "http://www.bekerle.com"
     }
   ],
   "require": {
+    "php": ">=5.3.0",
     "ezsystems/ezpublish-kernel": "*"
   },
   "autoload": {
