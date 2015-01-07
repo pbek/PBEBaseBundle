@@ -6,12 +6,19 @@ The PBE Base Bundle is a webpage helper bundle for the [eZ Publish Platform](htt
 Implemented features
 --------------------
 
-* Two level **top menu** generation from a folder with folders and links to be included in the pagelayout.
+* Two level **top menu** generation from a folder with **folders and links** to be included in the pagelayout.
 
-* `pbe_fetch_content` twig function to **load content** in **twig** templates. This could, for example, be used in the pagelayout to load content from an object relation list.
+* `pbe_fetch_content` twig function to **load content** in **twig** templates. This could, for example, be used in the pagelayout to load content from an **object relation list**.
 
 Installation
 ----------
+
+First you need **composer**, if you don't already have it. You can execute this in your eZ Publish root directory.
+
+```shell
+curl -sS https://getcomposer.org/installer | php
+```
+
 
 Usage
 -----
