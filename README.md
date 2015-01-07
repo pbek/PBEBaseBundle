@@ -1,7 +1,7 @@
 PBE Base Bundle
 ==========
 
-The PBE Base Bundle is a webpage helper bundle for the [eZ Publish Platform](http://ez.no).
+The PBE Base Bundle is a webpage helper bundle for the [eZ Publish 5 Platform](http://ez.no).
 
 Implemented features
 --------------------
@@ -18,6 +18,42 @@ First you'll need **composer**, if you don't already have it. You can execute th
 ```shell
 curl -sS https://getcomposer.org/installer | php
 ```
+
+then you can require the bundle
+
+```shell
+php composer.phar require pbe/base-bundle
+```
+
+now you have to add the bundle to your `ezpublish/EzPublishKernel.php`
+
+```php
+use PBE\BaseBundle\PBEBaseBundle;
+
+...
+
+public function registerBundles()
+{
+   $bundles = array(
+       new FrameworkBundle(),
+       ...
+       new PBEBaseBundle()
+   );
+
+   ...
+}
+```
+
+To override code of the PBEBaseBundle you can also make it parent of your bundle.
+
+```php
+public function getParent()
+{
+    return 'PBEBaseBundle';
+}
+```
+
+Take a look at [How to Use Bundle Inheritance to Override Parts of a Bundle](http://symfony.com/doc/current/cookbook/bundles/inheritance.html) for more information.
 
 
 Usage
