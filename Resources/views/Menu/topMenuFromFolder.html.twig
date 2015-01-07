@@ -1,0 +1,22 @@
+<div class="top-menu">
+    <ul>
+        {% for menuItem in menuTree %}
+            <li {% if menuItem.link is defined %}onclick="location.href='{{ menuItem.link }}'"{% endif %}>
+                {% if menuItem.link is defined %}
+                    <a href="{{ menuItem.link }}">{{ menuItem.name }}</a>
+                {% elseif ( menuItem.children is defined ) and ( menuItem.children|length > 0 ) %}
+                    {{ menuItem.name }}
+                    <ul>
+                        {% for subMenuItem in menuItem.children %}
+                            <li {% if subMenuItem.link is defined %}onclick="location.href='{{ subMenuItem.link }}'"{% endif %}>
+                                {% if subMenuItem.link is defined %}
+                                    <a href="{{ subMenuItem.link }}">{{ subMenuItem.name }}</a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

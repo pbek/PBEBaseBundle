@@ -1,0 +1,14 @@
+parameters:
+    pbe_base.menu_controller.class: PBE\baseBundle\Controller\MenuController
+
+services:
+    pbe_base.menu.top_menu_from_folder:
+        class: %pbe_base.menu_controller.class%
+        tags:
+            - { name: pbe_base.top_menu_from_folder, alias: pbe_base_top_menu }
+    pbe_base.twig.base_extension:
+        class: PBE\BaseBundle\Twig\BaseExtension
+        arguments:
+            - @ezpublish.api.repository
+        tags:
+            - { name: twig.extension }
