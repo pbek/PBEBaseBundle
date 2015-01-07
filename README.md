@@ -17,17 +17,18 @@ Usage
 -----
 
 ### top menu generator
-Just include this code into your `pagelayout.html.twig` where you want to put your main menu. `86` is the location id of the parent folder.
+Just include this code into your `pagelayout.html.twig` where you want to put your main menu. In this example `86` is the location id of the parent folder.
 
 ```twig
 {{ render( controller( "PBEBaseBundle:Menu:topMenuFromFolder", { 'parentFolderLocationId': 86 } ) ) }}
 ```
-This can look like this:
+#### This can look like this
+
 ![Screenhot top-menu](screenshot-top-menu.png)
 
 ### pbe_fetch_content
 
-You can use this twig function in your templates to load content. `57` is the content id.
+You can use this **twig function** in your templates to **load content**. In this example `57` is the content id.
 
 ```twig
 {% set content = pbe_fetch_content( 57 ) %}
