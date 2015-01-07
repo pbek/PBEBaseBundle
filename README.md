@@ -3,6 +3,8 @@ PBE Base Bundle
 
 The PBE Base Bundle is a webpage helper bundle for the [eZ Publish 5 Platform](http://ez.no).
 
+You may want to visit the [PBEBaseBundle Project Webpage](http://www.bekerle.com/PBEBaseBundle) for more informations.
+
 Implemented features
 --------------------
 
@@ -77,4 +79,4 @@ You can use this **twig function** in your templates to **load content**. In thi
 {% set content = pbe_fetch_content( 57 ) %}
 ```
 
-It will return a `\eZ\Publish\Core\Repository\Values\Content\Content`.
+It will return a `\eZ\Publish\Core\Repository\Values\Content\Content` object.
