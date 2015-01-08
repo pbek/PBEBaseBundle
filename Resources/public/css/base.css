@@ -28,12 +28,18 @@
     transition: all 0.2s;
 }
 
+.top-menu ul li.active {
+    background: #666;
+    color: #fff;
+}
+
 .top-menu ul li:hover {
     background: #555;
     color: #fff;
 }
 
-.top-menu ul li:hover a {
+.top-menu ul li:hover a,
+.top-menu ul li.active a {
     color: #fff;
     text-decoration: none;
 }
@@ -64,7 +70,13 @@
     text-shadow: 0 -1px 0 #000;
 }
 
-.top-menu ul li ul li:hover { background: #666; }
+.top-menu ul li ul li.active {
+    background: #777;
+}
+
+.top-menu ul li ul li:hover {
+    background: #666;
+}
 
 .top-menu ul li:hover ul {
     display: block;

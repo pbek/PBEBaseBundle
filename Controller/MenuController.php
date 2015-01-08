@@ -42,6 +42,7 @@ class MenuController extends Controller
         $contentService = $repository->getContentService();
 
         $childLocationList = $repository->getLocationService()->loadLocationChildren( $location );
+        $requestUri = strtolower( $_SERVER["REQUEST_URI"] );
         $menuTree = array();
 
         foreach ( $childLocationList->locations as $childLocation )
@@ -52,9 +53,23 @@ class MenuController extends Controller
             {
                 case "folder":
                     // if a folder was found, build the tree underneath
+                    $tree = $this->buildMenuTree( $childLocation );
+
+                    // check if a sub-item is the active menu item
+                    $isActive = false;
+                    foreach ( $tree as $treeItem )
+                    {
+                        if ( $treeItem["active"] )
+                        {
+                            $isActive = true;
+                            break;
+                        }
+                    }
+
                     $data = array(
                         "name" => $childLocation->getContentInfo()->name,
-                        "children" => $this->buildMenuTree( $childLocation )
+                        "children" => $this->buildMenuTree( $childLocation ),
+                        "active" => $isActive
                     );
                     $menuTree[] = $data;
                     break;
@@ -65,9 +80,13 @@ class MenuController extends Controller
                     /** @var eZ\Publish\Core\FieldType\Url\Value $urlLocation */
                     $urlLocation = $content->getFieldValue( "location" );
 
+                    // check if current menu item is the active one
+                    $isActive = strpos( $requestUri, strtolower( $urlLocation->link ) ) !== false;
+
                     $data = array(
                         "name" => $childLocation->getContentInfo()->name,
-                        "link" => $urlLocation->link
+                        "link" => $urlLocation->link,
+                        "active" => $isActive
                     );
                     $menuTree[] = $data;
                     break;
