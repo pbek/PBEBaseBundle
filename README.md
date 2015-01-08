@@ -103,7 +103,7 @@ For example for your menu entry with the location id `101` additionally load a m
 
 ##### This may look like this
 
-The "Blog" Menu entry has the `locationId` `101`.
+The "Blog" menu entry has the `locationId` `101`.
 The blog posts are directly loaded from the blog (`'locationId': 70`).
 
 ![Screenshot top-menu with directly loaded locations](screenshot-top-menu-with-directly-loaded-locations.png)
