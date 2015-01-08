@@ -79,9 +79,35 @@ Just include this code into your `pagelayout.html.twig` where you want to put yo
 ```twig
 {{ render( controller( "PBEBaseBundle:Menu:topMenuFromFolder", { 'parentFolderLocationId': 86 } ) ) }}
 ```
-#### This can look like this
+##### This may look like this
 
-![Screenhot top-menu](screenshot-top-menu.png)
+![Screenshot top-menu](screenshot-top-menu.png)
+
+#### Injecting other sub-locations to directly link to
+
+You can also add **sub-locations** that are directly linked to in your menu.
+
+For example for your menu entry with the location id `101` additionally load a maximum of `8` items of location `locationId`.
+ 
+```twig
+{{ render( controller( "PBEBaseBundle:Menu:topMenuFromFolder", {
+                        'parentFolderLocationId': 86,
+                        'directlyIncludedLocations': {
+                            101: {
+                                'locationId': 70,
+                                'limit': 8
+                            }
+                        }
+                    } ) ) }}
+```
+
+##### This may look like this
+
+The "Blog" Menu entry has the `locationId` `101`.
+The blog posts are directly loaded from the blog (`'locationId': 70`).
+
+![Screenshot top-menu with directly loaded locations](screenshot-top-menu-with-directly-loaded-locations.png)
+
 
 ### pbe_fetch_content
 
