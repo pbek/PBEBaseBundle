@@ -49,6 +49,7 @@ class MenuController extends Controller
 
         foreach ( $childLocationList->locations as $childLocation )
         {
+            $contentType = $contentTypeService->loadContentType( $childLocation->contentInfo->contentTypeId );
             $gotItems = false;
 
             // check if we should include the items of a location directly
@@ -77,6 +78,22 @@ class MenuController extends Controller
                         "active" => $isActive
                     );
 
+                    // if we have a link also add the "link" to it
+                    if ( $contentType->identifier == "link" )
+                    {
+                        // if a link was found, get the link destination
+                        $content = $contentService->loadContent( $childLocation->contentId );
+
+                        /** @var eZ\Publish\Core\FieldType\Url\Value $urlLocation */
+                        $urlLocation = $content->getFieldValue( "location" );
+
+                        // check if current menu item is the active one
+                        $isLinkActive = strpos( $requestUri, strtolower( $urlLocation->link ) ) === 0;
+
+                        $data["link"] = $urlLocation->link;
+                        $data["active"] = $data["active"] || $isLinkActive;
+                    }
+
                     $menuTree[] = $data;
                     $gotItems = true;
                 }
@@ -85,7 +102,6 @@ class MenuController extends Controller
             // do the regular menu tree building if we haven't already got items
             if ( !$gotItems )
             {
-                $contentType = $contentTypeService->loadContentType( $childLocation->contentInfo->contentTypeId );
 
                 switch ( $contentType->identifier )
                 {
