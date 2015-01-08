@@ -21,13 +21,13 @@ First you'll need **composer**, if you don't already have it. You can execute th
 curl -sS https://getcomposer.org/installer | php
 ```
 
-then you can require the bundle
+Then you can require the bundle:
 
 ```shell
 php composer.phar require pbe/base-bundle
 ```
 
-now you have to add the bundle to your `ezpublish/EzPublishKernel.php`
+Now you have to add the bundle to your `ezpublish/EzPublishKernel.php`:
 
 ```php
 use PBE\BaseBundle\PBEBaseBundle;
@@ -44,6 +44,18 @@ public function registerBundles()
 
    ...
 }
+```
+
+Finally you need to add the `base.css` file to your `page_head_style.html.twig` like this:
+
+```twig
+{% stylesheets
+    '@eZDemoBundle/Resources/public/css/bootstrap.css'
+    ...
+    '@PBEBaseBundle/Resources/public/css/base.css'
+%}
+    <link rel="stylesheet" type="text/css" href="{{ asset_url }}"/>
+{% endstylesheets %}
 ```
 
 To override code of the PBEBaseBundle you can also make it parent of your bundle.
