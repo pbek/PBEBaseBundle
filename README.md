@@ -1,9 +1,9 @@
 PBE Base Bundle
 ==========
 
-The PBE Base Bundle is a webpage helper bundle for the [eZ Publish 5 Platform](http://ez.no).
+The **PBE Base Bundle** is a **webpage helper bundle** for the [**eZ Publish 5 Platform**](http://ez.no).
 
-You may want to visit the [PBEBaseBundle Project Webpage](http://www.bekerle.com/PBEBaseBundle) for more informations.
+You may also want to visit the [PBEBaseBundle Project Webpage](http://www.bekerle.com/PBEBaseBundle) for more informations.
 
 Implemented features
 --------------------
@@ -21,13 +21,13 @@ First you'll need **composer**, if you don't already have it. You can execute th
 curl -sS https://getcomposer.org/installer | php
 ```
 
-Then you can require the bundle:
+Then you can **require** the bundle:
 
 ```shell
 php composer.phar require pbe/base-bundle
 ```
 
-Now you have to add the bundle to your `ezpublish/EzPublishKernel.php`:
+Now you have to **add** the **bundle** to your `ezpublish/EzPublishKernel.php`:
 
 ```php
 use PBE\BaseBundle\PBEBaseBundle;
@@ -46,7 +46,7 @@ public function registerBundles()
 }
 ```
 
-Finally you need to add the `base.css` file to your `page_head_style.html.twig` like this:
+Finally you need to **add** the `base.css` file to your `page_head_style.html.twig` like this:
 
 ```twig
 {% stylesheets
@@ -58,7 +58,7 @@ Finally you need to add the `base.css` file to your `page_head_style.html.twig` 
 {% endstylesheets %}
 ```
 
-To override code of the PBEBaseBundle you can also make it parent of your bundle.
+To **override** code of the **PBEBaseBundle** you can also make it **parent** of your bundle.
 
 ```php
 public function getParent()
@@ -67,14 +67,14 @@ public function getParent()
 }
 ```
 
-Take a look at [How to Use Bundle Inheritance to Override Parts of a Bundle](http://symfony.com/doc/current/cookbook/bundles/inheritance.html) for more information.
+Take a look at [How to Use Bundle Inheritance to Override Parts of a Bundle](http://symfony.com/doc/current/cookbook/bundles/inheritance.html) for **more information.**
 
 
 Usage
 -----
 
 ### top menu generator
-Just include this code into your `pagelayout.html.twig` where you want to put your main menu. In this example `86` is the location id of the parent folder.
+Just include this code into your `pagelayout.html.twig` where you want to put your **main menu**. In this example `86` is the location id of the parent folder.
 
 ```twig
 {{ render( controller( "PBEBaseBundle:Menu:topMenuFromFolder", { 'parentFolderLocationId': 86 } ) ) }}
