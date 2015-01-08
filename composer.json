@@ -1,6 +1,6 @@
 {
   "name": "pbe/base-bundle",
-  "description": "Webpage helper bundle for eZ Publish Platform",
+  "description": "Webpage helper bundle for eZ Publish Platform (dropdown menu from folders and links, twig content fetcher function)",
   "keywords": ["ezpublish", "menu"],
   "license": "GPL-2.0",
   "authors": [
