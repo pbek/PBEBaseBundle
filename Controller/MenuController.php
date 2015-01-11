@@ -44,7 +44,7 @@ class MenuController extends Controller
         $contentService = $repository->getContentService();
 
         $childLocationList = $repository->getLocationService()->loadLocationChildren( $location );
-        $requestUri = strtolower( $_SERVER["REQUEST_URI"] );
+        $requestUri = strtolower( @$_SERVER["REQUEST_URI"] );
         $menuTree = array();
 
         foreach ( $childLocationList->locations as $childLocation )
@@ -153,7 +153,7 @@ class MenuController extends Controller
     private function buildDirectlyIncludedMenuTree( \eZ\Publish\API\Repository\Values\Content\Location $location, $limit = 10 )
     {
         $repository = $this->getRepository();
-        $requestUri = strtolower( $_SERVER["REQUEST_URI"] );
+        $requestUri = strtolower( @$_SERVER["REQUEST_URI"] );
         $menuTree = array();
 
         // fetch items of directly included location
