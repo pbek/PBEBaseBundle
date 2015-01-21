@@ -1,5 +1,5 @@
 parameters:
-    pbe_base.menu_controller.class: PBE\baseBundle\Controller\MenuController
+    pbe_base.menu_controller.class: PBE\BaseBundle\Controller\MenuController
 
 services:
     pbe_base.menu.top_menu_from_folder:

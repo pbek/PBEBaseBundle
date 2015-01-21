@@ -10,11 +10,14 @@ use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
 // this imports the "@Template" annotations
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+// this imports the "@Route" annotations
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class MenuController extends Controller
 {
     /**
      * @Template()
+     * @Route("/menu/top_menu_from_folder/{parentFolderLocationId}")
      * @param int $parentFolderLocationId
      * @param array|null $directlyIncludedLocations
      * @return \Symfony\Component\HttpFoundation\Response

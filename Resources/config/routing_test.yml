@@ -1,0 +1,7 @@
+pbe_base_menu_top_menu_from_folder:
+    path: /menu/top_menu_from_folder/{parentFolderLocationId}
+    defaults:
+        _controller: PBEBaseBundle:Menu:topMenuFromFolder
+    methods: [GET]
+    requirements:
+        parentFolderLocationId: \d+
