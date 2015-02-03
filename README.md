@@ -24,7 +24,7 @@ curl -sS https://getcomposer.org/installer | php
 Then you can **require** the bundle:
 
 ```shell
-php composer.phar require pbe/base-bundle
+php composer.phar "pbe/base-bundle":"dev-master"
 ```
 
 Now you have to **add** the **bundle** to your `ezpublish/EzPublishKernel.php`:
