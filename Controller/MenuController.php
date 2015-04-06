@@ -130,7 +130,15 @@ class MenuController extends Controller
                         $urlLocation = $content->getFieldValue( "location" );
 
                         // check if current menu item is the active one
-                        $isActive = strpos( $requestUri, strtolower( $urlLocation->link ) ) === 0;
+                        // special handling for "home" links
+                        if ( $urlLocation->link == "/" )
+                        {
+                            $isActive = $requestUri == $urlLocation->link;
+                        }
+                        else
+                        {
+                            $isActive = strpos( $requestUri, strtolower( $urlLocation->link ) ) === 0;
+                        }
 
                         $data = array(
                             "name" => $childLocation->getContentInfo()->name,
