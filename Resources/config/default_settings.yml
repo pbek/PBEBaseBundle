@@ -1,0 +1,6 @@
+parameters:
+    # depth of root location
+    pbe_base.default.root_location_depth: 3
+
+    # disabled because I have to set them in an other bundle, because they still get ignored in DependencyInjection
+    # pbe_base.default.websites: []
