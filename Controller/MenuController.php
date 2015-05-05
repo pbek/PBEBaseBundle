@@ -172,6 +172,7 @@ class MenuController extends Controller
         foreach ( $childLocationList->locations as $childLocation )
         {
             // get the url alias for the location
+            // TODO: there is a bug in this, the path prefix will not be heeded and is still in the path!
             $urlAlias = $this->getRepository()->getURLAliasService()->reverseLookup( $childLocation );
             $link = $urlAlias->path;
 
