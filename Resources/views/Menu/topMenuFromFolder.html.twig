@@ -14,7 +14,7 @@
                         {% for subMenuItem in menuItem.children %}
                             <li {% if subMenuItem.link is defined %}onclick="location.href='{{ subMenuItem.link }}'"{% endif %} {% if subMenuItem.active %}class="active"{% endif %}>
                                 {% if subMenuItem.link is defined %}
-                                    <a href="{{ subMenuItem.link }}">{{ subMenuItem.name }}</a>
+                                    <a {% if subMenuItem.open_in_new_window %}target="_blank"{% endif %} href="{{ subMenuItem.link }}">{{ subMenuItem.name }}</a>
                                 {% endif %}
                             </li>
                         {% endfor %}

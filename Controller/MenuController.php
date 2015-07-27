@@ -78,7 +78,8 @@ class MenuController extends Controller
                     $data = array(
                         "name" => $childLocation->getContentInfo()->name,
                         "children" => $tree,
-                        "active" => $isActive
+                        "active" => $isActive,
+                        "open_in_new_window" => false
                     );
 
                     // if we have a link also add the "link" to it
@@ -87,14 +88,18 @@ class MenuController extends Controller
                         // if a link was found, get the link destination
                         $content = $contentService->loadContent( $childLocation->contentId );
 
-                        /** @var eZ\Publish\Core\FieldType\Url\Value $urlLocation */
+                        /** @var \eZ\Publish\Core\FieldType\Url\Value $urlLocation */
                         $urlLocation = $content->getFieldValue( "location" );
 
                         // check if current menu item is the active one
                         $isLinkActive = strpos( $requestUri, strtolower( $urlLocation->link ) ) === 0;
 
+                        /** @var \eZ\Publish\Core\FieldType\Checkbox\Value $isOpenInNewWindow */
+                        $openInNewWindow = $content->getFieldValue( "open_in_new_window" );
+
                         $data["link"] = $urlLocation->link;
                         $data["active"] = $data["active"] || $isLinkActive;
+                        $data["open_in_new_window"] = $openInNewWindow->bool;
                     }
 
                     $menuTree[] = $data;
@@ -118,7 +123,8 @@ class MenuController extends Controller
                         $data = array(
                             "name" => $childLocation->getContentInfo()->name,
                             "children" => $this->buildMenuTree( $childLocation ),
-                            "active" => $isActive
+                            "active" => $isActive,
+                            "open_in_new_window" => false
                         );
                         $menuTree[] = $data;
                         break;
@@ -140,10 +146,14 @@ class MenuController extends Controller
                             $isActive = strpos( $requestUri, strtolower( $urlLocation->link ) ) === 0;
                         }
 
+                        /** @var \eZ\Publish\Core\FieldType\Checkbox\Value $isOpenInNewWindow */
+                        $openInNewWindow = $content->getFieldValue( "open_in_new_window" );
+
                         $data = array(
                             "name" => $childLocation->getContentInfo()->name,
                             "link" => $urlLocation->link,
-                            "active" => $isActive
+                            "active" => $isActive,
+                            "open_in_new_window" => $openInNewWindow->bool
                         );
                         $menuTree[] = $data;
                         break;
@@ -182,7 +192,8 @@ class MenuController extends Controller
             $data = array(
                 "name" => $childLocation->getContentInfo()->name,
                 "link" => $link,
-                "active" => $isActive
+                "active" => $isActive,
+                "open_in_new_window" => false
             );
 
             $menuTree[] = $data;
