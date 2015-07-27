@@ -94,7 +94,7 @@ class MenuController extends Controller
                         // check if current menu item is the active one
                         $isLinkActive = strpos( $requestUri, strtolower( $urlLocation->link ) ) === 0;
 
-                        /** @var \eZ\Publish\Core\FieldType\Checkbox\Value $isOpenInNewWindow */
+                        /** @var \eZ\Publish\Core\FieldType\Checkbox\Value $openInNewWindow */
                         $openInNewWindow = $content->getFieldValue( "open_in_new_window" );
 
                         $data["link"] = $urlLocation->link;
@@ -146,7 +146,7 @@ class MenuController extends Controller
                             $isActive = strpos( $requestUri, strtolower( $urlLocation->link ) ) === 0;
                         }
 
-                        /** @var \eZ\Publish\Core\FieldType\Checkbox\Value $isOpenInNewWindow */
+                        /** @var \eZ\Publish\Core\FieldType\Checkbox\Value $openInNewWindow */
                         $openInNewWindow = $content->getFieldValue( "open_in_new_window" );
 
                         $data = array(

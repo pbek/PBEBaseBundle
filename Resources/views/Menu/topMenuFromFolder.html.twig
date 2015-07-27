@@ -12,7 +12,16 @@
                 {% if ( menuItem.children is defined ) and ( menuItem.children|length > 0 ) %}
                     <ul>
                         {% for subMenuItem in menuItem.children %}
-                            <li {% if subMenuItem.link is defined %}onclick="location.href='{{ subMenuItem.link }}'"{% endif %} {% if subMenuItem.active %}class="active"{% endif %}>
+                            <li
+                                {% if subMenuItem.link is defined %}
+                                    {% if subMenuItem.open_in_new_window %}
+                                        onclick="window.open('{{ subMenuItem.link }}'); return false;"
+                                    {% else %}
+                                        onclick="location.href='{{ subMenuItem.link }}'; return false;"
+                                    {% endif %}
+                                {% endif %}
+                                {% if subMenuItem.active %}class="active"{% endif %}>
+
                                 {% if subMenuItem.link is defined %}
                                     <a {% if subMenuItem.open_in_new_window %}target="_blank"{% endif %} href="{{ subMenuItem.link }}">{{ subMenuItem.name }}</a>
                                 {% endif %}
