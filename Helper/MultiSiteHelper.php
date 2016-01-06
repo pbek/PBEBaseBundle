@@ -53,15 +53,22 @@ class MultiSiteHelper
         $mainLocationId = $location->contentInfo->mainLocationId;
 
         // we don't need a canonical url
-        if ( $mainLocationId == $locationId )
-        {
-            return "";
-        }
+//        if ( $mainLocationId == $locationId )
+//        {
+//            return "";
+//        }
 
         $mainLocation = $this->locationService->loadLocation( $mainLocationId );
         $path = $mainLocation->path;
 
         $rootLocationId = $this->configResolver->getParameter( 'content.tree_root.location_id' );
+
+        // also use a canonical url for the front page
+        if ( $rootLocationId == $locationId )
+        {
+            return "/";
+        }
+
         $urlAlias = $this->urlAliasService->reverseLookup( $mainLocation );
 
         // main location is in current root tree
